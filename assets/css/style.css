@@ -9,9 +9,8 @@
     width: 100%;
     min-height: 100vh;
     background: linear-gradient(135deg, #5e041c, #130106);
+    display: flex;
 }
-
-
 
 body {
     color: rgb(218, 196, 200);
@@ -19,30 +18,48 @@ body {
     min-height: 100vh;
 }
 
-header {
-    font-size: 2rem;
+.block{
+    display: content;
+    width: 40%;
+    text-align: center;
 }
 
-img {
-    width: 15rem;
-    height: 10rem;
-    margin-bottom: -3.5rem;
+h1{
+    margin-left: 5%;
+    margin-bottom: 2%;
+}
+
+.image{
+    height: 6rem;
+    width: 10rem;
+    object-fit: contain;
+    margin-bottom: -1.5rem;
+}
+
+header {
+    font-size: 1.5rem;
+    display: contents;
+}
+
+.text{
+    margin-left: 5%;
 }
 
 .list{
+    margin-top: 30px;
+    width: 60%;
     font-size: 2.5rem;
     min-height: 10vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: block;
 }
 
 header, form {
     min-height: 20vh;
-    display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: 5%;
 }
+
 
 form input, form button {
     padding: 1rem;
@@ -51,6 +68,11 @@ form input, form button {
     border: none;
     background: rgb(224, 187, 197);
     border-radius: 2rem;
+}        
+
+form input {
+    width: 60%;
+    box-sizing: border-box;
 }
 
 form button {
@@ -67,7 +89,9 @@ form button:hover {
 }
 
 .fa-plus-circle {
-    margin-top: 0.4rem;
+    position: relative;
+    top: 2px;
+    margin-top: 0rem;
     margin-right: 7px;
 }
 
@@ -78,9 +102,10 @@ form button:hover {
 }
 
 .todo-list {
-    min-width: 50%;
+    min-width: 90%;
     list-style: none;
 }
+
 
 .todo {
     margin: 0.5rem;
@@ -99,12 +124,17 @@ form button:hover {
     flex: 1;
 }
 
-.trash-btn, .complete-btn {
+.todo:hover{
+    background-color: rgba(224, 187, 197, 0.542);
+}
+
+.trash-btn, .complete-btn, .down-btn, .up-btn {
     color: white;
     border: none;
     padding: 1rem;
     cursor: pointer;
     font-size: 1.5rem;
+    height: max-content;
 }
 
 .complete-btn {
@@ -117,9 +147,24 @@ form button:hover {
     background: rgb(171, 171, 171);
 }
 
+.up-btn{
+    position: relative;
+    right: 8px;
+    border-top-left-radius: 1.75rem;
+    border-bottom-left-radius: 1.75rem;
+    background: rgb(171, 171, 171);
+}
+
+.down-btn{
+    position: relative;
+    right: 8px;
+    background: rgb(202, 20, 57);
+}
+
 .todo-item {
     padding: 0rem 0.6rem;
 }
+
 
 .fa-trash, .fa-check-circle {
     pointer-events: none;
@@ -131,9 +176,64 @@ form button:hover {
 }
 
 .slide {
-    transform: translateX(6rem);
+    transform: translateX(2rem);
     opacity: 0;
 }
 
+/* Mobile: width < 740px */
+@media only screen and (max-width: 46.1875em) {
 
+    .container {
+        display: block;
+    }
+      
+    .block {
+        width: 100%;
+        display: block;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+      
+    .list {
+        width: 100%;
+        display: block;
+        align-items: center;
+        justify-content: center;
+    }
 
+    .list .text{
+        text-align: center;
+    }
+      
+      
+
+}
+/* Table: width >= 740px and width < 1024px  */
+@media only screen and (min-width: 46.25em) and (max-width: 63.92375em) {
+     .container {
+        display: block;
+    }
+      
+    .block {
+        width: 100%;
+        display: block;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+      
+    .list {
+        width: 100%;
+        display: block;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .list .text{
+        text-align: center;
+    }
+
+}
