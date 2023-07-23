@@ -1,22 +1,22 @@
-// Chờ cho trang web được tải hoàn toàn trước khi gọi hàm
 window.onload = function () {
     const todos = getLocalTodos();
     todos.forEach(todo => {
-        createTodoElement(todo);
+      createTodoElement(todo);
     });
-};
+}; 
 
-// Lấy tham chiếu tới các phần tử trên trang web
-const todoInput = document.querySelector(".todo-input");
+// Lấy tham chiếu tới các phần tử trên trang web bằng id
+const todoInput = document.getElementById("todo-input");
 const todoButton = document.querySelector(".todo-button");
-const todoList = document.querySelector(".todo-list");
-
+const todoList = document.getElementById("todo-list");
+const clearButton = document.querySelector(".clear-btn");
 
 // Gắn sự kiện click cho nút "Add"
 todoButton.addEventListener("click", addTodo);
 
 // Gắn sự kiện click cho danh sách công việc
 todoList.addEventListener("click", deleteCheck);
+clearButton.addEventListener("click", clearAllList);
 
 
 // Hàm xử lý sự kiện khi người dùng nhấp vào nút "Add"
@@ -36,26 +36,32 @@ function addTodo() {
     }
 }
 
+
+// Hàm xử lý sự kiện khi người dùng nhấp vào nút "Clear All List"
+function clearAllList() {
+    const todoItems = document.querySelectorAll(".todo");
+    todoItems.forEach(todo => {
+        todo.classList.add("slide");
+        removeLocalTodos(todo);
+        todo.addEventListener("transitionend", function () {
+            todo.remove();
+        });
+    });
+}
+
 // Hàm tạo phần tử công việc và hiển thị nó trên trang web
 function createTodoElement(todoText) {
     const todoDiv = document.createElement("div");
     todoDiv.classList.add("todo");
+    // Thêm thuộc tính "draggable" cho phần tử công việc
+    todoDiv.draggable = true;
 
-    const upButton = document.createElement("button");
-    upButton.innerHTML = '<i class="fas fa-chevron-up"></i>';
-    upButton.classList.add("up-btn");
-    todoDiv.appendChild(upButton);
-
-    const downButton = document.createElement("button");
-    downButton.innerHTML = '<i class="fas fa-chevron-down"></i>';
-    downButton.classList.add("down-btn");
-    todoDiv.appendChild(downButton);
 
     const newTodo = document.createElement("li");
     newTodo.innerText = todoText;
     newTodo.classList.add("todo-item");
     todoDiv.appendChild(newTodo);
-
+    
     const completedButton = document.createElement("button");
     completedButton.innerHTML = '<i class="fas fa-check-circle"></i>';
     completedButton.classList.add("complete-btn");
@@ -86,18 +92,9 @@ function deleteCheck(e) {
     } else if (item.classList.contains("complete-btn")) {
         // Chuyển đổi trạng thái hoàn thành của công việc
         todo.classList.toggle("completed");
-    } else if (item.classList.contains("up-btn")) {
-        const previousTodo = todo.previousElementSibling;
-        if (previousTodo) {
-            todoList.insertBefore(todo, previousTodo);
-        }
-    } else if (item.classList.contains("down-btn")) {
-        const nextTodo = todo.nextElementSibling;
-        if (nextTodo) {
-            todoList.insertBefore(nextTodo, todo);
-        }
-    }
+    } 
 }
+
 
 
 // Hàm lưu công việc vào localStorage
@@ -125,4 +122,15 @@ function removeLocalTodos(todo) {
     todos = todos.filter(item => item !== todoText);
     localStorage.setItem("todos", JSON.stringify(todos));
 }
+  
+function update() {
+    localStorage.setItem("data",todoList.innerHTML);
+}
+
+const sortable = new Sortable(todoList, {
+    animation: 150,
+    onUpdate: function (event) {
+        saveLocalTodos();
+    },
+});
 
