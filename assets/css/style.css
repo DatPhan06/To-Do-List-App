@@ -29,6 +29,15 @@ h1{
     margin-bottom: 2%;
 }
 
+.todo .handle {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background: #ccc;
+    cursor: grab;
+    margin-right: 10px;
+}
+
 .image{
     height: 6rem;
     width: 10rem;
@@ -128,14 +137,17 @@ form button:hover {
     background-color: rgba(224, 187, 197, 0.542);
 }
 
-.trash-btn, .complete-btn, .down-btn, .up-btn {
+.trash-btn, .complete-btn {
     color: white;
     border: none;
+
     padding: 1rem;
+    padding-block: 5%;
     cursor: pointer;
     font-size: 1.5rem;
     height: max-content;
 }
+
 
 .complete-btn {
     background: rgb(202, 20, 57);
@@ -145,20 +157,6 @@ form button:hover {
     border-top-right-radius: 1.75rem;
     border-bottom-right-radius: 1.75rem;
     background: rgb(171, 171, 171);
-}
-
-.up-btn{
-    position: relative;
-    right: 8px;
-    border-top-left-radius: 1.75rem;
-    border-bottom-left-radius: 1.75rem;
-    background: rgb(171, 171, 171);
-}
-
-.down-btn{
-    position: relative;
-    right: 8px;
-    background: rgb(202, 20, 57);
 }
 
 .todo-item {
@@ -206,7 +204,10 @@ form button:hover {
     .list .text{
         text-align: center;
     }
-      
+    
+    .todo-list{
+        font-size: 1px;
+    }
       
 
 }
