@@ -12,6 +12,13 @@
     display: flex;
 }
 
+#clear-all{
+    text-align: right;
+    position: relative;
+    top: 10px;
+    left:0px;
+}
+
 body {
     color: rgb(218, 196, 200);
     font-family: "Poppins", sans-serif;
@@ -27,6 +34,15 @@ body {
 h1{
     margin-left: 5%;
     margin-bottom: 2%;
+}
+
+.todo .handle {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background: #ccc;
+    cursor: grab;
+    margin-right: 10px;
 }
 
 .image{
@@ -89,6 +105,7 @@ form button:hover {
 }
 
 .fa-plus-circle {
+    height: 10px;
     position: relative;
     top: 2px;
     margin-top: 0rem;
@@ -128,14 +145,17 @@ form button:hover {
     background-color: rgba(224, 187, 197, 0.542);
 }
 
-.trash-btn, .complete-btn, .down-btn, .up-btn {
+.trash-btn, .complete-btn {
     color: white;
     border: none;
+
     padding: 1rem;
+    padding-block: 5%;
     cursor: pointer;
     font-size: 1.5rem;
     height: max-content;
 }
+
 
 .complete-btn {
     background: rgb(202, 20, 57);
@@ -145,20 +165,6 @@ form button:hover {
     border-top-right-radius: 1.75rem;
     border-bottom-right-radius: 1.75rem;
     background: rgb(171, 171, 171);
-}
-
-.up-btn{
-    position: relative;
-    right: 8px;
-    border-top-left-radius: 1.75rem;
-    border-bottom-left-radius: 1.75rem;
-    background: rgb(171, 171, 171);
-}
-
-.down-btn{
-    position: relative;
-    right: 8px;
-    background: rgb(202, 20, 57);
 }
 
 .todo-item {
@@ -178,6 +184,14 @@ form button:hover {
 .slide {
     transform: translateX(2rem);
     opacity: 0;
+}
+
+@media only screen and (max-width: 38.6477em) {
+    #clear-all{
+        position: relative;
+        top: 10px;
+    }
+
 }
 
 /* Mobile: width < 740px */
@@ -206,7 +220,10 @@ form button:hover {
     .list .text{
         text-align: center;
     }
-      
+    
+    .todo-list{
+        font-size: 1px;
+    }
       
 
 }
@@ -234,6 +251,11 @@ form button:hover {
 
     .list .text{
         text-align: center;
+    }
+
+    #clear-all{
+        position: relative;
+        top: 0px;
     }
 
 }
