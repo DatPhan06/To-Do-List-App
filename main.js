@@ -3,6 +3,7 @@ window.onload = function () {
     todos.forEach(todo => {
       createTodoElement(todo);
     });
+<<<<<<< HEAD
   
     initSortable(); // Áp dụng Sortable cho danh sách công việc
   };
@@ -31,6 +32,9 @@ window.onload = function () {
     });
     localStorage.setItem("todos", JSON.stringify(todos));
   }
+=======
+}; 
+>>>>>>> 94d70aa3b8571bcb81a7b60abd8bb9c990936dc7
 
 // Lấy tham chiếu tới các phần tử trên trang web bằng id
 const todoInput = document.getElementById("todo-input");
@@ -150,4 +154,17 @@ function removeLocalTodos(todo) {
     localStorage.setItem("todos", JSON.stringify(todos));
 }
   
+<<<<<<< HEAD
+=======
+function update() {
+    localStorage.setItem("data",todoList.innerHTML);
+}
+
+const sortable = new Sortable(todoList, {
+    animation: 150,
+    onUpdate: function (event) {
+        saveLocalTodos();
+    },
+});
+>>>>>>> 94d70aa3b8571bcb81a7b60abd8bb9c990936dc7
 
